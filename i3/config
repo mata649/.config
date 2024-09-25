@@ -147,60 +147,70 @@ mode "resize" {
 bindsym $mod+r mode "resize"
 # Theme
 
-set $rosewater #f5e0dc
-set $flamingo #f2cdcd
-set $pink #f5c2e7
-set $mauve #cba6f7
-set $red #f38ba8
-set $maroon #eba0ac
-set $peach #fab387
-set $yellow #f9e2af
-set $green #a6e3a1
-set $teal #94e2d5
-set $sky #89dceb
-set $sapphire #74c7ec
-set $blue #89b4fa
-set $lavender #b4befe
-set $text #cdd6f4
-set $subtext1 #bac2de
-set $subtext0 #a6adc8
-set $overlay2 #9399b2
-set $overlay1 #7f849c
-set $overlay0 #6c7086
-set $surface2 #585b70
-set $surface1 #45475a
-set $surface0 #313244
-set $base #1e1e2e
-set $mantle #181825
-set $crust #11111b
-
+# Colors
+set $dragonWhite #c5c9c5
+set $oldWhite #C8C093
+set $waveBlue1 #223249
+set $waveBlue2 #2D4F67
+set $dragonBlack0 #0d0c0c
+set $dragonBlack1 #12120f
+set $dragonBlack2 #1D1C19
+set $dragonBlack3 #181616
+set $dragonBlack4 #282727
+set $dragonBlack5 #393836
+set $dragonBlack6 #625e5a
+set $dragonGray3 #7a8382
+set $samuraiRed #E82424
+set $roninYellow #FF9E3B
+set $waveAqua1 #6A9589
+set $dragonBlue #658594
+set $fujiWhite #DCD7BA
+set $sumiInk6 #54546D
+set $dragonGreen2 #8a9a7b
+set $dragonPink #a292a3
+set $dragonOrange #b6927b
+set $dragonYellow #c4b28a
+set $dragonViolet #8992a7
+set $dragonRed #c4746e
+set $dragonAqua #8ea4a2
+set $katanaGray #717C7C
+set $winterGreen #2B3328
+set $winterRed #43242B
+set $winterBlue #252535
+set $autumnGreen #76946A
+set $autumnRed #C34043
+set $autumnYellow #DCA561
+set $springGreen #98BB6C
+set $waveRed #E46876
+set $carpYellow #E6C384
+set $springBlue #7FB4CA
+set $springViolet1 #938AA9
+set $waveAqua2 #7AA89F
 
 # Start i3bar to display a workspace bar (plus the system information i3status
 # finds out, if available)
 bar {
         status_command SCRIPT_DIR=~/.config/i3/scripts i3blocks -c ~/.config/i3/i3blocks.config
 	tray_output DP-0
-    colors {
-        background         $base
-        statusline         $text
-        focused_statusline $text
-        focused_separator  $base
+       colors {
+        background $dragonBlack0
+        statusline $dragonWhite
+        separator  $waveBlue2
 
-        # target           border bg        text
-        focused_workspace  $base  $mauve    $crust
-        active_workspace   $base  $surface2 $text
-        inactive_workspace $base  $base     $text
-        urgent_workspace   $base  $red      $crust
-  }
+        focused_workspace  $dragonWhite $waveBlue1 $dragonWhite
+        active_workspace   $dragonWhite $waveBlue1 $waveAqua1
+        inactive_workspace $dragonGray3 $dragonBlack3 $dragonGray3
+        urgent_workspace   $samuraiRed $dragonBlack1 $samuraiRed
+    }
 }
 
 # target                 title     bg    text   indicator  border
-client.focused           $lavender $base $text  $rosewater $lavender
-client.focused_inactive  $overlay0 $base $text  $rosewater $overlay0
-client.unfocused         $overlay0 $base $text  $rosewater $overlay0
-client.urgent            $peach    $base $peach $overlay0  $peach
-client.placeholder       $overlay0 $base $text  $overlay0  $overlay0
-client.background        $base
+client.focused           $dragonWhite  $dragonBlack3   $dragonWhite   $waveRed       $waveBlue1
+client.focused_inactive  $dragonGray3  $dragonBlack3   $dragonWhite   $waveRed       $dragonGray3
+client.unfocused         $dragonGray3  $dragonBlack3   $dragonWhite   $waveRed       $dragonGray3
+client.urgent            $autumnRed    $dragonBlack3   $autumnRed     $dragonGray3   $autumnRed
+client.placeholder       $dragonGray3  $dragonBlack3   $dragonWhite   $dragonGray3   $dragonGray3
+client.background        $dragonBlack0
 
 gaps outer 10
 gaps inner 10
@@ -214,6 +224,6 @@ for_window [class="^.*"] border pixel 0
 
 exec --no-startup-id xset s off
 exec --no-startup-id xset -dpms
-
+exec --no-startup-id xrandr --output HDMI-0 --off --output DP-0 --mode 1920x1080 --pos 3840x0 --rotate normal --output DP-1 --off --output DP-2 --mode 1920x1080 --pos 0x0 --rotate normal --output DP-3 --off --output DP-4 --mode 1920x1080 --pos 1920x0 --rotate normal --output DP-5 --off
 for_window [title="Microsoft Teams Notification"] floating enable
 no_focus [title="Microsoft Teams Notification"]

@@ -24,7 +24,8 @@ vim.g.maplocalleader = "\\"
 -- Setup lazy.nvim
 require("lazy").setup({
     spec = {
-        { "catppuccin/nvim",                  name = "catppuccin", priority = 1000 },
+        { "rebelot/kanagawa.nvim", name = "kanagawa", priority = 1000 },
+
         {
             "nvim-telescope/telescope.nvim",
             tag = "0.1.8",
