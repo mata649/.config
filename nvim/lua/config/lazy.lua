@@ -24,7 +24,11 @@ vim.g.maplocalleader = "\\"
 -- Setup lazy.nvim
 require("lazy").setup({
     spec = {
-        { "rebelot/kanagawa.nvim", name = "kanagawa", priority = 1000 },
+        {
+            'maxmx03/fluoromachine.nvim',
+            lazy = false,
+            priority = 1000
+        },
 
         {
             "nvim-telescope/telescope.nvim",

@@ -21,7 +21,7 @@ vim.keymap.set("n", "<leader>t", vim.cmd.tabnew)
 vim.keymap.set("n", "<leader>nt", vim.cmd.tabnext)
 vim.keymap.set("n", "<leader>pt", vim.cmd.tabp)
 
-vim.keymap.set("n", "<leader>l", ":ShowBufferList<CR>", { noremap = true })
+vim.keymap.set("n", "<C-Right>", "e", { noremap = true })
 
 
 vim.opt.rnu = true

@@ -187,23 +187,6 @@ set $springBlue #7FB4CA
 set $springViolet1 #938AA9
 set $waveAqua2 #7AA89F
 
-# Start i3bar to display a workspace bar (plus the system information i3status
-# finds out, if available)
-bar {
-        status_command SCRIPT_DIR=~/.config/i3/scripts i3blocks -c ~/.config/i3/i3blocks.config
-	tray_output DP-0
-       colors {
-        background $dragonBlack0
-        statusline $dragonWhite
-        separator  $waveBlue2
-
-        focused_workspace  $dragonWhite $waveBlue1 $dragonWhite
-        active_workspace   $dragonWhite $waveBlue1 $waveAqua1
-        inactive_workspace $dragonGray3 $dragonBlack3 $dragonGray3
-        urgent_workspace   $samuraiRed $dragonBlack1 $samuraiRed
-    }
-}
-
 # target                 title     bg    text   indicator  border
 client.focused           $dragonWhite  $dragonBlack3   $dragonWhite   $waveRed       $waveBlue1
 client.focused_inactive  $dragonGray3  $dragonBlack3   $dragonWhite   $waveRed       $dragonGray3
@@ -212,8 +195,8 @@ client.urgent            $autumnRed    $dragonBlack3   $autumnRed     $dragonGra
 client.placeholder       $dragonGray3  $dragonBlack3   $dragonWhite   $dragonGray3   $dragonGray3
 client.background        $dragonBlack0
 
-gaps outer 10
-gaps inner 10
+gaps inner 12
+
 for_window [class="Yad"] floating enable
 
 exec --no-startup-id nitrogen --force-setter=xinerama --restore
@@ -224,6 +207,10 @@ for_window [class="^.*"] border pixel 0
 
 exec --no-startup-id xset s off
 exec --no-startup-id xset -dpms
-exec --no-startup-id xrandr --output HDMI-0 --off --output DP-0 --mode 1920x1080 --pos 3840x0 --rotate normal --output DP-1 --off --output DP-2 --mode 1920x1080 --pos 0x0 --rotate normal --output DP-3 --off --output DP-4 --mode 1920x1080 --pos 1920x0 --rotate normal --output DP-5 --off
+exec --no-startup-id ~/.screenlayout/xrandr.sh
+
+exec --no-startup-id ~/.config/polybar/launch.sh &
+
+
 for_window [title="Microsoft Teams Notification"] floating enable
 no_focus [title="Microsoft Teams Notification"]
